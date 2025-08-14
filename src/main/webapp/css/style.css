@@ -1,0 +1,53 @@
+
+.header-image {
+    height: 250px;
+    object-fit: cover;
+}
+
+.asside {
+    background-color: #008f11;
+    border-radius: 10px;
+    padding: 20px;
+    color: #000000;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    width: 100%;
+}
+
+.asside ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.asside ul li {
+    margin: 10px 0;
+}
+
+.asside a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.asside a:hover,
+.asside a:active {
+    background-color: #000000;
+    color: #fff;
+}
+
+
+@media (max-width: 768px) {
+    .asside {
+        padding: 15px;
+    }
+
+    .asside a {
+        padding: 8px 12px;
+    }
+}
