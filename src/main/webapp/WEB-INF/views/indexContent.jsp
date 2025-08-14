@@ -6,9 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
-
 <div class="container mt-4">
   <div class="row">
     <!-- Main content -->
@@ -17,7 +15,6 @@
         <h2><fmt:message key="intro.title"/></h2>
         <p><fmt:message key="intro.text"/></p>
       </section>
-
       <section class="first">
         <h1><fmt:message key="products.title"/></h1>
         <p><fmt:message key="products.text"/></p>
@@ -34,7 +31,6 @@
     <!-- End Main content -->
 
     <!-- Aside -->
-
     <aside class="col-lg-4 mt-4 mt-lg-0">
       <div class="asside">
         <ul>
