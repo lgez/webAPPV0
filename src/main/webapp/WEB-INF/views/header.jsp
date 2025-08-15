@@ -18,8 +18,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XIRTAM</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-
 </head>
 <body>
 
@@ -56,6 +56,15 @@
                     <li class="nav-item"><a class="nav-link" href="#"><fmt:message key="menu.about"/></a></li>
                 </ul>
 
+                <!-- Cart icon -->
+                <a href="${pageContext.request.contextPath}/checkout" class="nav-link position-relative me-3">
+                    <i class="bi bi-cart" style="font-size: 1.5rem;"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        <c:out value="${sessionScope.cart != null ? sessionScope.cart.size() : 0}" />
+                    </span>
+                </a>
+
+                <!-- Language selector -->
                 <form class="d-flex">
                     <select class="form-select" onchange="location.href='changeLanguage?lang=' + this.value">
                         <option value="en" ${sessionScope.lang == 'en' ? 'selected' : ''}>English</option>
