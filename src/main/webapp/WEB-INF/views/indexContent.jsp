@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: lgezc
@@ -34,7 +35,7 @@
     <aside class="col-lg-4 mt-4 mt-lg-0">
       <div class="asside">
         <ul>
-          <li><a href="#"><fmt:message key="aside.link1"/></a></li>
+          <li><a href="products"><fmt:message key="aside.link1"/></a></li>
           <li><a href="#"><fmt:message key="aside.link2"/></a></li>
           <li><a href="#"><fmt:message key="aside.link3"/></a></li>
         </ul>
