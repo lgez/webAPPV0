@@ -37,7 +37,7 @@
         <ul>
           <li><a href="products"><fmt:message key="aside.link1"/></a></li>
           <li><a href="#"><fmt:message key="aside.link2"/></a></li>
-          <li><a href="#"><fmt:message key="aside.link3"/></a></li>
+          <li><a href="${pageContext.request.contextPath}/about.jsp"><fmt:message key="menu.about"/></a></li>
         </ul>
       </div>
     </aside>

@@ -9,4 +9,7 @@ public interface IproductDAO {
     public List<Product> findAll();
 
     public Product findById(int id);
+
+    List<Product> findFiltered(String[] modes, String[] levels, boolean under200);
+
 }

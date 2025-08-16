@@ -53,7 +53,7 @@
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link" href="index.jsp"><fmt:message key="menu.welcome"/></a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><fmt:message key="menu.contact"/></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><fmt:message key="menu.about"/></a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.jsp"><fmt:message key="menu.about"/></a></li>
                 </ul>
 
                 <!-- Cart icon -->
