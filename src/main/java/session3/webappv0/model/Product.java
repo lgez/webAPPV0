@@ -4,6 +4,11 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import jakarta.persistence.*;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "product")
@@ -35,13 +40,14 @@ public class Product {
     @Column(name = "product_key", length = 50, unique = true)
     private String productKey;
 
-    @Column(length = 100)
-    private String path;
-
     @Column(precision = 10, scale = 2)
     private BigDecimal prix;
 
-    // --- Getters and Setters ---
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Transaction> transactions = new ArrayList<>();
+
+    // Constructors, Getters & Setters
+    public Product() {}
 
     public Integer getId() {
         return id;
@@ -107,18 +113,19 @@ public class Product {
         this.productKey = productKey;
     }
 
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
     public BigDecimal getPrix() {
         return prix;
     }
+
     public void setPrix(BigDecimal prix) {
         this.prix = prix;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
     }
 }

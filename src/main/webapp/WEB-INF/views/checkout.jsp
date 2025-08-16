@@ -68,10 +68,24 @@
                     </span>
                 </h4>
                 <form method="post" action="${pageContext.request.contextPath}/checkout">
+                    <!-- 🧾 Customer name input -->
+                    <div class="mb-3">
+                        <label for="customerName" class="form-label">
+                            <fmt:message key="checkout.customerName" />
+                        </label>
+                        <input type="text"
+                               class="form-control"
+                               name="customerName"
+                               id="customerName"
+                               placeholder="Enter your name"
+                               required />
+                    </div>
+
                     <button type="submit" class="btn btn-success btn-lg">
                         <fmt:message key="checkout.confirmPurchase" />
                     </button>
                 </form>
+
             </div>
         </c:otherwise>
     </c:choose>

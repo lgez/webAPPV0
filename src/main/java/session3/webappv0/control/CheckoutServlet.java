@@ -3,6 +3,7 @@ package session3.webappv0.control;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
+import session3.webappv0.data_access.*;
 import session3.webappv0.model.Product;
 
 import java.io.IOException;
@@ -50,7 +51,7 @@ public class CheckoutServlet extends HttpServlet {
                 if (p.getId() == idToRemove) {
                     total = total.subtract(p.getPrix());
                     iterator.remove();
-                    break; // remove only first match
+                    break;
                 }
             }
             session.setAttribute("cartTotal", total);
@@ -58,13 +59,37 @@ public class CheckoutServlet extends HttpServlet {
             return;
         }
 
-        // Confirm purchase - clear cart
-        if (!cart.isEmpty()) {
+
+        String customerName = request.getParameter("customerName");
+
+        if (customerName != null && !customerName.trim().isEmpty() && !cart.isEmpty()) {
+
+            IproductDAO productDAO = new ProductDAOJpa();
+            ICustomerDAO customerDAO = new CustomerDAOJpa();
+            ITransactionDAO transactionDAO = new TransactionDAOJpa();
+
+            CheckoutService checkoutService = new CheckoutService(productDAO, customerDAO, transactionDAO);
+
+            // Extract product IDs
+            List<Integer> productIds = cart.stream().map(Product::getId).toList();
+
+            try {
+                checkoutService.processCheckout(customerName, productIds);
+            } catch (Exception e) {
+                e.printStackTrace();
+
+                request.setAttribute("error", "Checkout failed. Try again.");
+                request.getRequestDispatcher("/WEB-INF/views/checkout.jsp").forward(request, response);
+                return;
+            }
+
+            // Clear cart after successful purchase
             cart.clear();
             session.setAttribute("cartTotal", BigDecimal.ZERO);
         }
 
-        // Redirect to confirmation page
+
         response.sendRedirect(request.getContextPath() + "/orderConfirmation");
     }
+
 }

@@ -1,14 +1,14 @@
 
-CREATE TABLE user (
+CREATE TABLE costumer (
                       id INT AUTO_INCREMENT PRIMARY KEY,
                       name VARCHAR(100)
 );
 CREATE TABLE comment (
                          id INT AUTO_INCREMENT PRIMARY KEY,
-                         user_id INT,
+                         costumer_id INT,
                          content TEXT,
                          created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                         FOREIGN KEY (user_id) REFERENCES user(id)
+                         FOREIGN KEY (costumer_id) REFERENCES customer(id)
 );
 
 
@@ -25,3 +25,18 @@ CREATE TABLE product (
                          path VARCHAR(100)
 );
 
+ALTER TABLE product
+    DROP COLUMN path;
+
+CREATE TABLE transaction (
+                             id INT AUTO_INCREMENT PRIMARY KEY,
+                             customer_id INT NOT NULL,
+                             product_id INT NOT NULL,
+                             purchase_date DATE NOT NULL,
+                             quantity INT,
+                             price_at_purchase DECIMAL(10, 2),
+                             CONSTRAINT fk_transaction_customer
+                                 FOREIGN KEY (customer_id) REFERENCES customer(id),
+                             CONSTRAINT fk_transaction_product
+                                 FOREIGN KEY (product_id) REFERENCES product(id)
+);
